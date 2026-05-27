@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDB {
-    private final static String URL = "jdbc:mysql://localhost:3309/PelardoDB?serverTimezone=UTC";
-    private final static String USERNAME = "root";
-    private final static String PASSWORD = "root";
+    private final static String URL = "jdbc:postgresql://aws-1-eu-north-1.pooler.supabase.com:5432/postgres?sslmode=require";
+    private final static String USERNAME = "postgres.nzcfuoonqmdvdyzpuumw";
+    private final static String PASSWORD = "BlackLotus-16"; // Reemplaza con tu contraseña real de Supabase
     private static Connection connection = null;
 
     public static Connection connect() throws Exception {
