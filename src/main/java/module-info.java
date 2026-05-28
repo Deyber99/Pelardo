@@ -3,6 +3,7 @@ module com.example.pelardo.jdbc {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.graphics;
+    requires org.postgresql.jdbc;
 
 
 
