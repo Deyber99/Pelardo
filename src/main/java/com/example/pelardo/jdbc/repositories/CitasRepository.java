@@ -14,7 +14,7 @@ public class CitasRepository {
         // consulta
         List<CitaTbl> listaCitas = new ArrayList<>();
         try (PreparedStatement mostrarCitaStatement = ConnectionDB.connect()
-                .prepareStatement("SELECT * FROM CITAS WHERE fecha = ?");) {
+                .prepareStatement("SELECT * FROM citas WHERE fecha = ?");) {
             // completamos los "?", con los datos correspondientes
             mostrarCitaStatement.setString(1, fecha);
             // ejecutamos la sentencia SQL
@@ -40,7 +40,7 @@ public class CitasRepository {
     }
 
     public static void insertCita(String cliente, String fecha, String hora, String descripcion) throws Exception {
-        String sql = "INSERT INTO CITAS (cliente, fecha, hora, descripcion) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO citas (cliente, fecha, hora, descripcion) VALUES (?, ?, ?, ?)";
         try (
                 PreparedStatement insertStatement = ConnectionDB.connect().prepareStatement(sql)) {
             insertStatement.setString(1, cliente);
@@ -56,7 +56,7 @@ public class CitasRepository {
     }
 
     public static void updateCita(CitaTbl cita) throws Exception {
-        String sql = "UPDATE CITAS SET cliente = ?, fecha = ?, hora = ?, descripcion = ? WHERE id_Cita = ?";
+        String sql = "UPDATE citas SET cliente = ?, fecha = ?, hora = ?, descripcion = ? WHERE \"id_Cita\" = ?";
         try (
                 PreparedStatement preparedStatement = ConnectionDB.connect().prepareStatement(sql)) {
             // asignamos los valores a la sentencia sql
@@ -73,14 +73,14 @@ public class CitasRepository {
         }
     }
 
-    public  static void deleteCita(CitaTbl cita) throws Exception {
-        String sql = "DELETE FROM CITAS WHERE id_Cita = ?";
+    public static void deleteCita(CitaTbl cita) throws Exception {
+        String sql = "DELETE FROM citas WHERE \"id_Cita\" = ?";
         try (PreparedStatement preparedStatement = ConnectionDB.connect().prepareStatement(sql)) {
             // asignamos los valores a la sentencia sql
             preparedStatement.setInt(1, cita.getId_Cita());
             // ejecutamos el update
             preparedStatement.executeUpdate();
-        }  catch (SQLException exception) {
+        } catch (SQLException exception) {
             throw new Exception("Error en la bas3e de datos. \n" +
                     "Informacion del error: " + exception.getMessage());
         }
