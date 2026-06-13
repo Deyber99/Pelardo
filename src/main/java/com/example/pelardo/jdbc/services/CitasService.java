@@ -4,14 +4,18 @@ import com.example.pelardo.jdbc.models.CitaTbl;
 import com.example.pelardo.jdbc.repositories.CitasRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CitasService {
+    private static final Logger LOGGER = Logger.getLogger(CitasService.class.getName());
+
     public List<CitaTbl> mostrarCita(String fecha) {
         try {
             return CitasRepository.mostrarCita(fecha);
 
         } catch (Exception e) {
-            System.out.println("Error al mostrar las citas: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error al mostrar las citas: {0}", e.getMessage());
             return new ArrayList<>();
         }
     }

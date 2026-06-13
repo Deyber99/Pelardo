@@ -7,7 +7,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ConnectionDB {
+    private static final Logger LOGGER = Logger.getLogger(ConnectionDB.class.getName());
     private static String url;
     private static String username;
     private static String password;
@@ -23,7 +27,7 @@ public class ConnectionDB {
                 password = properties.getProperty("db.password");
             }
         } catch (IOException exception) {
-            System.err.println("Error al cargar db.properties: " + exception.getMessage());
+            LOGGER.log(Level.SEVERE, "Error al cargar db.properties: {0}", exception.getMessage());
         }
 
         // Fallback to environment variables if not loaded from properties file
