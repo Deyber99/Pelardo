@@ -8,12 +8,12 @@ import org.mockito.MockedStatic;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class LoginServicesTest {
+class LoginServicesTest {
 
     private final LoginServices loginServices = new LoginServices();
 
     @Test
-    public void testLoginBlankFieldsThrowsException() {
+    void testLoginBlankFieldsThrowsException() {
         Exception exception1 = assertThrows(Exception.class, () -> loginServices.login("", "password"));
         assertEquals("Todos los campos deben ir informados", exception1.getMessage());
 
@@ -22,7 +22,7 @@ public class LoginServicesTest {
     }
 
     @Test
-    public void testLoginSuccess() throws Exception {
+    void testLoginSuccess() throws Exception {
         Usuario mockUsuario = new Usuario(1, "john_doe", "password123", "usuario");
 
         try (MockedStatic<LoginRepository> mockedRepository = mockStatic(LoginRepository.class)) {
@@ -38,25 +38,25 @@ public class LoginServicesTest {
     }
 
     @Test
-    public void testRegisterBlankFieldsThrowsException() {
+    void testRegisterBlankFieldsThrowsException() {
         Exception exception = assertThrows(Exception.class, () -> loginServices.register("", "pass", "pass"));
         assertEquals("Todos los campos deben ir informados", exception.getMessage());
     }
 
     @Test
-    public void testRegisterPasswordsDoNotMatch() {
+    void testRegisterPasswordsDoNotMatch() {
         Exception exception = assertThrows(Exception.class, () -> loginServices.register("user", "password123", "different"));
         assertEquals("Las contraseñas no coinciden", exception.getMessage());
     }
 
     @Test
-    public void testRegisterPasswordTooShort() {
+    void testRegisterPasswordTooShort() {
         Exception exception = assertThrows(Exception.class, () -> loginServices.register("user", "short", "short"));
         assertEquals("La contraseña debe tener 8 caracteres minimo", exception.getMessage());
     }
 
     @Test
-    public void testRegisterUserAlreadyExists() {
+    void testRegisterUserAlreadyExists() {
         try (MockedStatic<LoginRepository> mockedRepository = mockStatic(LoginRepository.class)) {
             mockedRepository.when(() -> LoginRepository.userExists("existing_user"))
                     .thenReturn(true);
@@ -69,7 +69,7 @@ public class LoginServicesTest {
     }
 
     @Test
-    public void testRegisterSuccess() throws Exception {
+    void testRegisterSuccess() throws Exception {
         try (MockedStatic<LoginRepository> mockedRepository = mockStatic(LoginRepository.class)) {
             mockedRepository.when(() -> LoginRepository.userExists("new_user"))
                     .thenReturn(false);

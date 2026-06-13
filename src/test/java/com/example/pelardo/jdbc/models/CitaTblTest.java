@@ -3,10 +3,10 @@ package com.example.pelardo.jdbc.models;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CitaTblTest {
+class CitaTblTest {
 
     @Test
-    public void testCitaTblConstructorAndGetters() {
+    void testCitaTblConstructorAndGetters() {
         CitaTbl cita = new CitaTbl(10, "Juan Perez", "2026-06-01", "10:30", "Consulta general");
 
         assertEquals(10, cita.getId_Cita());
