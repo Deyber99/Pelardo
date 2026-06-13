@@ -7,12 +7,10 @@ import com.example.pelardo.jdbc.services.CitasService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class MainScreen {
     // elementos de layout
@@ -31,7 +29,6 @@ public class MainScreen {
     private TableColumn<CitaTbl, String> colHora = new TableColumn<>("Hora");
     private TableColumn<CitaTbl, String> colCliente = new TableColumn<>("Cliente");
     private TableColumn<CitaTbl, String> colDescripcion = new TableColumn<>("Descripcion");
-    private ArrayList<CitaTbl> listaCitas = new ArrayList<>();
 
     // servicio para consultas a DB
     private CitasService citasService = new CitasService();

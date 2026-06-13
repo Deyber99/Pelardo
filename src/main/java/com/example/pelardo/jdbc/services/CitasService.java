@@ -2,12 +2,8 @@ package com.example.pelardo.jdbc.services;
 
 import com.example.pelardo.jdbc.models.CitaTbl;
 import com.example.pelardo.jdbc.repositories.CitasRepository;
-import com.example.pelardo.jdbc.repositories.LoginRepository;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.pelardo.jdbc.repositories.LoginRepository.userExists;
 
 public class CitasService {
     public List<CitaTbl> mostrarCita(String fecha) {
